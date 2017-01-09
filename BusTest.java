@@ -5,11 +5,13 @@ public class BusTest{
 
   Bus bus;
   Person traveller;
+  BusStop wait;
 
   @Before
   public void before(){
     bus = new Bus();
     traveller = new Person();
+    wait = new BusStop();
   }
 
   @Test // create empty bus
@@ -54,6 +56,28 @@ public class BusTest{
     }
 
     assertEquals(10, bus.passengerCount());
+  }
+
+  @Test //add 3 people to Bus Stop
+  public void addPeopleWaitingForBus(){
+    wait.addWait(traveller);
+    wait.addWait(traveller);
+    wait.addWait(traveller);
+
+    assertEquals(3, wait.waitCount());
+
+  }
+
+  @Test // move people onto bus
+  public void movePeopleWaitingOntoBus(){
+
+    for( int i = 0; i < 2; i++){
+      wait.addWait(traveller);
+    }
+    wait.boardBus();
+
+    assertEquals(0, wait.waitCount());
+
   }
 
 
