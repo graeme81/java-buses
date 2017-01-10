@@ -70,13 +70,17 @@ public class BusTest{
 
   @Test // move people onto bus
   public void movePeopleWaitingOntoBus(){
-
-    for( int i = 0; i < 2; i++){
+    int i;
+    for( i = 0; i < 2; i++){ 
       wait.addWait(traveller);
     }
-    wait.boardBus();
+    for (int j = 0; j < i; j ++){
+      bus.pickUp(traveller);
+    }
+    wait.allAboard();
 
     assertEquals(0, wait.waitCount());
+    assertEquals(2, bus.passengerCount());
 
   }
 

@@ -24,15 +24,13 @@ public class BusStop{
     return count;
   }
 
-  public void boardBus(){
-    for (Person person : wait){
-      arrival.pickUp(person);
-    } 
-    for (int i = 0; i <= waitCount(); i++){
-      wait[i]=null;
-    } 
-    
-  }
+  public void allAboard(){
 
+      int i = waitCount();
+      for(int num = 0; num < i; num++){
+        wait[num] = null;
+      }
+    
+  } 
 
 }
